@@ -1,32 +1,29 @@
 <script setup>
-// import { ref } from 'vue';
-// import { useRouter } from 'vue-router';
-// import axios from 'axios';
+import { onBeforeMount, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-// const email = ref('')
-// const password = ref('')
-// const router = useRouter()
+const search = ref();
+const RecentBook = ref([]);
 
-// const LoginCheck = async () => {
-//   const loginInfo = {
-//     username:email.value,
-//     password:password.value
-//   }
-//   const tryLogin = await axios.post('http://localhost:8000/api/login_check',loginInfo)
-//   .then( function(response) {console.log( response.data)})
-//   if (tryLogin.status == 200) {
-//     router.push({ name: 'home' })
-//     console.log("ok")
-//   } else {
-//     console.warn(tryLogin.statusText)
-//   }
-//   console.log(tryLogin.data.token)
-// }
+const fetchRecentBooks = async () => {
+  const livre = await axios.get('https://www.dbooks.org/api/recent')
+  console.log(livre.data.books[0])
+  RecentBook.value = livre.data.books
+}
+onBeforeMount(async () => {
+  await fetchRecentBooks()
+})
 </script>
 
 <template>
-  <div>
-    HOME
+  <div class="HomePage"  >
+    <div class="gallery" >
+    <div class="zoneLivre" v-for="item in  RecentBook">
+      <img class="booksHomeImg" v-bind:src='item.image' />
+      <div>{{ item.title }}</div>
+    </div>
+  </div>
   </div>
 </template>
 <style scoped></style>

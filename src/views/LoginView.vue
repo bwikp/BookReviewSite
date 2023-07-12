@@ -17,13 +17,14 @@ const LoginCheck = async () => {
     password:password.value
   }
   const token = await axios.post('http://localhost:8000/api/login_check',loginInfo)
-//   .then( function(response) {console.log( response.data)})
-//   if (tryLogin.status == 200) {
-//     router.push({ name: 'home' })
-//     console.log("ok")
-//   } else {
-//     console.warn(tryLogin.statusText)
-//   }
+  
+  if (token.status == 200) {
+    router.push({ name: 'home' })
+    console.log("ok")
+  } else {
+    console.warn(token.statusText)
+  }
+
 //   console.log(token.data.token)
   localStorage.setItem('token',token.data.token)
   console.log(localStorage)
