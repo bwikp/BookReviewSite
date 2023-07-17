@@ -20,7 +20,7 @@ onBeforeMount(async () => {
   <div class="HomePage"  >
     <div class="gallery" >
     <div class="zoneLivre" v-for="item in  RecentBook">
-      <img class="booksHomeImg" v-bind:src='item.image' />
+      <img v-bind:src='item.image' />
       <div>{{ item.title }}</div>
     </div>
   </div>
