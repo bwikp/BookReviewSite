@@ -36,6 +36,7 @@ const LoginCheck = async () => {
 <template>
   <div class="login">
     <input type="text" placeholder="email" v-model="email">
+    <div>{{ email }}</div>
     <input type="text" placeholder="password" v-model="password">
     <input type="button" value="login" @click="LoginCheck()">
   </div>
