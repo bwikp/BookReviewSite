@@ -7,8 +7,8 @@
 
     const searchBook = async () => {
         const resultat = await axios.get('https://www.dbooks.org/api/search/'+search.value)
+        // console.log(resultat.data)
         rSearch.value = resultat.data.books
-
         console.log(rSearch.value)
 }
 </script>
