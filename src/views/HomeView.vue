@@ -1,6 +1,5 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
-import { useRouter } from 'vue-router';
 import axios from 'axios';
 import Leheader from '../components/Leheader.vue';
 
@@ -22,8 +21,8 @@ onBeforeMount(async () => {
   <div class="HomePage"  >
     <div class="gallery" >
     <div class="zoneLivre" v-for="item in RecentBook">
-      <a v-bind:href="'/book/'+item.id" ><img class="pimg" v-bind:src='item.image' /></a>
-      <div class="title">{{ item.title }}</div>
+      <a v-bind:href="'/book/'+item.id" ><img class="pimg" v-bind:src='item.image'></a>
+      <p class="title">{{ item.title }}</p>
     </div>
   </div>
   </div>

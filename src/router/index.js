@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import LivrePage from '../views/LivrePage.vue'
+import SearchPage from '../views/SearchPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/book/:id',
       name: 'bookpage',
       component: LivrePage
+    },
+    {
+      path: '/search/:sq',
+      name: 'searchPage',
+      component: SearchPage
     }
   ]
 })
