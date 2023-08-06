@@ -2,8 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-
-
+import Leheader from '../components/Leheader.vue';
 
 
 
@@ -35,10 +34,11 @@ const LoginCheck = async () => {
 
 <template>
   <div class="login">
+    <div class="loginZone">    
     <input type="text" placeholder="email" v-model="email">
-    <div>{{ email }}</div>
     <input type="text" placeholder="password" v-model="password">
-    <input type="button" value="login" @click="LoginCheck()">
+    <input id="buttonlogin" type="button" value="login" @click="LoginCheck()">
+  </div>
   </div>
 </template>
 <style scoped></style>

@@ -9,9 +9,30 @@
 }
 
 .login input{
-  width: 200px;
+  width: 70%;
+  height: 50px;
+  background-color:rgba(236, 225, 225, 0.8);
+  box-shadow: 0px 0px 5px  rgba(124, 119, 119,0.8);
+  border-radius: 20px;
+  border: 1px solid black;
+  text-align: center;
 }
-
+#buttonlogin{
+  width: 35%;
+}
+.loginZone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 30%;
+    height: 50%;
+    border-radius: 25px;
+    box-shadow: 0px 0px 35px  #0a61e4;
+    border: 1px solid rgb(103, 96, 96);
+    background: white;
+}
 *,
 *::before,
 *::after {

@@ -21,7 +21,6 @@
 })
 </script>
 <template>
-<Leheader></Leheader>
     <div class="livreP">
        <h2>{{ leLivre.title }}</h2>
         <div><img v-bind:src='leLivre.image' /></div>

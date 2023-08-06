@@ -17,7 +17,6 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-    <Leheader></Leheader>
   <div class="HomePage"  >
     <div class="gallery" >
     <div class="zoneLivre" v-for="item in RecentBook">

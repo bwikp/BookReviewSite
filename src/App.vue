@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { onBeforeMount } from 'vue';
+import Leheader from './components/Leheader.vue';
 import axios from 'axios';
 
   let Allcategorie = ref([])
@@ -16,6 +17,7 @@ import axios from 'axios';
 </script>
 
 <template>
+  <Leheader/>
   <RouterView />
 </template>
 
