@@ -137,10 +137,40 @@ body,html,#app{
   color: white;
 }
 
-.livreP{
+.LivreP{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 80%;
+  padding: 2.5%;
+  width: 100%;
+  gap: 25px;
+}
+.LivrePimg{
+    color: black;
+    background: #c0cbda;
+    text-align: center;
+    width: 40%
+}
+.LivrePimg img{
+  height: 400px;
+  width: 300px;
+}
+.LivrePdes{
+    display: flex;
+    padding: 2.5%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap:5%;
+    color: black;
+    font-size: 24px;
+    width: 60%;
+    height: 90%;
+    background: #ffffff;
+}
+.livrePclick{
+  width: 100%;
+  gap: 25px;
 }

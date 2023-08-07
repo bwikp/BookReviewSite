@@ -21,16 +21,22 @@
 })
 </script>
 <template>
-    <div class="livreP">
-       <h2>{{ leLivre.title }}</h2>
-        <div><img v-bind:src='leLivre.image' /></div>
-        <h3>{{ leLivre.subtitle }}</h3>
-        <p>description: {{ leLivre.description}}</p>
-        <div>authors: {{ leLivre.authors }}</div>
-        <div>publisher: {{ leLivre.publisher }}</div>
-        <div> number of pages: {{ leLivre.pages }}</div>
-        <div>year:{{ leLivre.year }}</div>
-        <a v-bind:href="leLivre.download"><button value="download">Download</button></a>
+    <div class="LivreP">
+        <div class="LivrePimg">
+            <img v-bind:src='leLivre.image' />
+            <div class="livrePclick">
+            <h2>{{ leLivre.title }}</h2>
+            <a v-bind:href="leLivre.download"><button value="download">Download</button></a>
+            </div>
+        </div>
         
+        <div class="LivrePdes">
+            <h3>{{ leLivre.subtitle }}</h3>
+            <p>description: {{ leLivre.description}}</p>
+            <div>authors: {{ leLivre.authors }}</div>
+            <div>publisher: {{ leLivre.publisher }}</div>
+            <div> number of pages: {{ leLivre.pages }}</div>
+            <div>year:{{ leLivre.year }}</div>
+        </div>
     </div>
 </template>
