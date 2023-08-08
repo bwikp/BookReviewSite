@@ -25,12 +25,12 @@
         <div class="LivrePimg">
             <img v-bind:src='leLivre.image' />
             <div class="livrePclick">
-            <h2>{{ leLivre.title }}</h2>
-            <a v-bind:href="leLivre.download"><button value="download">Download</button></a>
+            <a v-bind:href="leLivre.download" class="DwdButton" ><button  value="download">Download</button></a>
             </div>
         </div>
         
         <div class="LivrePdes">
+            <h2>{{ leLivre.title }}</h2>
             <h3>{{ leLivre.subtitle }}</h3>
             <p>description: {{ leLivre.description}}</p>
             <div>authors: {{ leLivre.authors }}</div>

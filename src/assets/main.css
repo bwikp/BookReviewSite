@@ -143,19 +143,25 @@ body,html,#app{
   justify-content: center;
   align-items: center;
   height: 80%;
-  padding: 2.5%;
+  padding: 2.0%;
   width: 100%;
   gap: 25px;
+
 }
 .LivrePimg{
     color: black;
-    background: #c0cbda;
+    /* background: #c0cbda; */
     text-align: center;
-    width: 40%
+    height: 90%;
+    width: 25%;
+    border-radius: 25px;
+    border: 1px solid rgb(236, 236, 236);
+
 }
 .LivrePimg img{
-  height: 400px;
-  width: 300px;
+  height: 80%;
+  width: 100%;
+  border-radius: 25px 25px 0 0 ;
 }
 .LivrePdes{
     display: flex;
@@ -165,12 +171,39 @@ body,html,#app{
     align-items: start;
     gap:5%;
     color: black;
-    font-size: 24px;
+    font-size: 3vh;
     width: 60%;
     height: 90%;
     background: #ffffff;
+    border: 1px solid black;
+    border-radius: 20px;
+   
 }
 .livrePclick{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3px;
   width: 100%;
-  gap: 25px;
+  height: 20%;
+  background: rgb(225, 218, 218);
+  border-radius: 0 0 25px 25px;
+}
+.DwdButton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+}
+.DwdButton button{
+  width: 60%;
+  height: 80%;
+  background-color:rgba(236, 225, 225, 0.8);
+  box-shadow: 0px 0px 5px  rgba(124, 119, 119,0.8);
+  border-radius: 20px;
+  border: 1px solid black;
 }
