@@ -26,7 +26,9 @@ onBeforeMount(async () => {
     <div class="gallery" >
     <div class="zoneLivre" v-for="item in rSearch">
       <a v-bind:href="'/book/'+item.id" ><img class="pimg" v-bind:src='item.image'></a>
+        <div class="titleZone">
       <p class="title">{{ item.title }}</p>
+        </div>
     </div>
   </div>
   </div>
