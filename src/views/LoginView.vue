@@ -26,7 +26,7 @@ const LoginCheck = async () => {
 
 //   console.log(token.data.token)
   localStorage.setItem('token',token.data.token)
-  console.log(localStorage)
+  console.log(localStorage.token)
 }
 
 

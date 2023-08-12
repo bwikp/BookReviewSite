@@ -16,12 +16,12 @@ const registerUser = async () => {
         first_name: first_name.value,
         last_name: last_name.value
     }
-      await axios.post('http://localhost:8000/api/register', infoUser)
+    const questRegister = await axios.post('http://localhost:8000/api/register', infoUser)
 
-    // if(questRegister.status == 200)
-    //     {
-    //         router.push({ name: 'home' })
-    //     }
+    if(questRegister.status == 200)
+        {
+            router.push({ name: 'home' })
+        }
 }
 </script>
 <template>
