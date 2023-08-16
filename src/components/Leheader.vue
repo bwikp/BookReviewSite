@@ -27,7 +27,7 @@ import { useRouter } from 'vue-router';
         </div> 
         <div class="navlist">
             <a href="/login">Login</a>
-            <a href="/login">Mylibrary</a>
+            <a href="/library">Mylibrary</a>
         </div>
     </div>
 </template>

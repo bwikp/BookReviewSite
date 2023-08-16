@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import LivrePage from '../views/LivrePage.vue'
 import SearchPage from '../views/SearchPage.vue'
+import MyLibrary from '../views/MyLibrary.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,6 +32,11 @@ const router = createRouter({
       path: '/search/:sq',
       name: 'searchPage',
       component: SearchPage
+    },
+    {
+      path: '/library',
+      name: 'library',
+      component: MyLibrary
     }
   ]
 })
