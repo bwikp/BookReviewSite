@@ -8,11 +8,28 @@ if( localStorage.token == null)
     {
         window.location = "/login"
     }
-console.log(localStorage.token)
-const jwt = localStorage.token
-const decoded = jwt_decode(jwt)
-console.log(decoded)
+    
+const Token = localStorage.token
+const payload = jwt_decode(Token);
+// console.log(localStorage.token)
+// const decoded = jwt_decode(jwt)
+const userUser = ref([]);
+
+const test =  async () => {
+    const userToPut = await axios.get('http://localhost:8000/api/user/'+payload.id);
+    userUser.value = userToPut.data;
+    console.log(userUser.value)
+}
+
+
+onBeforeMount(async () => {
+  await test();
+})
+
+
+// console.log(payload)
+// console.log(payload.id)
 </script>
 <template>
-<div>LES</div>    
+ <div>{{ userUser.first_name }}</div> 
   </template>
