@@ -33,6 +33,7 @@ const LoginCheck = async () => {
 
 <template>
   <div class="login">
+    <h2>Login</h2>
     <div class="loginZone">    
     <input type="text" placeholder="email" v-model="email">
     <input type="text" placeholder="password" v-model="password">

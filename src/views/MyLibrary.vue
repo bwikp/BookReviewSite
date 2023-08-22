@@ -2,14 +2,13 @@
 import { onBeforeMount, ref } from 'vue';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-import { useRouter } from 'vue-router';
-const router = useRouter()
-if( localStorage.token == null)
+
+if( localStorage.token == null || localStorage.token == "expired")
     {
         window.location = "/login"
     }
-    
 const Token = localStorage.token
+
 const payload = jwt_decode(Token);
 // console.log(localStorage.token)
 // const decoded = jwt_decode(jwt)

@@ -23,7 +23,7 @@
 <template>
     <div class="LivreP">
         <div class="LivrePimg">
-            <img v-bind:src='leLivre.image' />
+            <img v-bind:src='leLivre.image'/>
             <div class="livrePclick">
             <a :href="leLivre.download" class="DwdButton" >Download</a>
             <button class="addButton">+</button>
