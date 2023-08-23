@@ -12,12 +12,14 @@ const Token = localStorage.token
 const payload = jwt_decode(Token);
 // console.log(localStorage.token)
 // const decoded = jwt_decode(jwt)
+// console.log(payload)
 const userUser = ref([]);
 
 const test =  async () => {
     const userToPut = await axios.get('http://localhost:8000/api/user/'+payload.id);
+    // console.log(userToPut.data.Object)
     userUser.value = userToPut.data;
-    console.log(userUser.value)
+    console.log(userUser.value.lib[0])
 }
 
 
@@ -25,10 +27,9 @@ onBeforeMount(async () => {
   await test();
 })
 
-
-// console.log(payload)
-// console.log(payload.id)
 </script>
 <template>
- <div>{{ userUser.first_name }}</div> 
+ <div>{{ userUser.first_name }}</div>
+ <div>{{ userUser.last_name }}</div>
+
   </template>

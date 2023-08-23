@@ -35,10 +35,10 @@ const LoginCheck = async () => {
   <div class="login">
     <h2>Login</h2>
     <div class="loginZone">    
-    <input type="text" placeholder="email" v-model="email">
-    <input type="text" placeholder="password" v-model="password">
-    <input id="buttonlogin" type="button" value="login" @click="LoginCheck()">
-  </div>
+      <input type="text" placeholder="email" v-model="email">
+      <input type="text" placeholder="password" v-model="password">
+      <input class="DwdButton" type="button" value="login" @click="LoginCheck()">
+    </div>
   </div>
 </template>
 <style scoped></style>
