@@ -9,6 +9,7 @@ const email = ref('')
 const password = ref('')
 const router = useRouter()
 
+
 const LoginCheck = async () => {
   const loginInfo = {
     username:email.value,
@@ -22,7 +23,6 @@ const LoginCheck = async () => {
   } else {
     console.warn(token.statusText)
   }
-
 //   console.log(token.data.token)
   localStorage.setItem('token',token.data.token)
   console.log(localStorage.token)

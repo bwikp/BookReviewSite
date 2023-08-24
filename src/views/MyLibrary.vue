@@ -1,14 +1,12 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 import jwt_decode from "jwt-decode";
 
-if( localStorage.token == null || localStorage.token == "expired")
-    {
-        window.location = "/login"
-    }
-const Token = localStorage.token
+const router = useRouter()
 
+const Token = localStorage.token
 const payload = jwt_decode(Token);
 // console.log(localStorage.token)
 // const decoded = jwt_decode(jwt)
@@ -16,10 +14,26 @@ const payload = jwt_decode(Token);
 const userUser = ref([]);
 
 const test =  async () => {
-    const userToPut = await axios.get('http://localhost:8000/api/user/'+payload.id);
+
+    const userToPut = await axios.request({headers: {Authorization: `Bearer ${Token} `},
+        method: "GET",
+        url: `http://localhost:8000/api/user/${+payload.id}`
+        }).catch( function (error)
+        {
+                let code = error.response.status
+                if(code === 401)
+                    {
+                        router.push({name:"login"})
+                    }
+        }
+        )
+        userUser.value = userToPut.data;
+
+       
+        
+
     // console.log(userToPut.data.Object)
-    userUser.value = userToPut.data;
-    console.log(userUser.value.lib[0])
+    // console.log(userUser.value.lib[0])
 }
 
 
