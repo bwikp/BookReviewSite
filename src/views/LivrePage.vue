@@ -24,15 +24,18 @@
         console.log('tempo',tempo.data);
 
             const bookinfo = {
-                idlivre:leLivre.id,
-                note:"Jack",
-                livretitle:leLivre.title
+                "idlivre":tempo.data.id,
+                "note":"Jack",
+                "livretitle":tempo.data.title
             }
-        let selected = await axios.request({
+            console.log(tempo.data.id)
+          await axios.request({
             headers: { Authorization: `Bearer ${Token}` },
+
             method: "POST",
             url: `http://localhost:8000/api/lib/new/${payload.id}`,
-        },bookinfo).catch(function (error) {
+            data: bookinfo
+        }).catch(function (error) {
         let code = error.response
                 console.log(code)
             })
