@@ -9,7 +9,7 @@ const fetchRecentBooks = async () => {
   RecentBook.value = livre.data.books
   console.log(RecentBook.value)
 }
-
+  
 onBeforeMount(async () => {
   await fetchRecentBooks()
 })
