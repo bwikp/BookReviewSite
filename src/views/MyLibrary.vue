@@ -21,7 +21,7 @@ const test = async () => {
         url: `http://localhost:8000/api/user/${+payload.id}`
     }).catch(function (error) {
         let code = error.response.status
-        if (code === 401) {
+        if (code === 401 || Token == null) {
             router.push({ name: "login" })
         }
     }
@@ -31,7 +31,7 @@ const test = async () => {
 
 
 
-     console.log(userToPut.value)
+    //  console.log(userToPut.value)
     // console.log(userUser.value.lib[0])
 }
 
