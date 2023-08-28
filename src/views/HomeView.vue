@@ -9,22 +9,22 @@ const fetchRecentBooks = async () => {
   RecentBook.value = livre.data.books
   console.log(RecentBook.value)
 }
-  
+
 onBeforeMount(async () => {
   await fetchRecentBooks()
 })
 </script>
 
 <template>
-  <div class="HomePage"  >  
-    <div class="gallery" >
-    <div class="zoneLivre" v-for="item in RecentBook">
-      <a v-bind:href="'/book/'+item.id" ><img class="pimg" v-bind:src='item.image'></a>
+  <div class="HomePage">
+    <div class="gallery">
+      <div class="zoneLivre" v-for="item in RecentBook">
+        <a v-bind:href="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></a>
         <div class="titleZone">
-      <p class="title">{{ item.title }}</p>
+          <p class="title">{{ item.title }}</p>
         </div>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <style scoped></style>

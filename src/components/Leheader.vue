@@ -1,12 +1,12 @@
 <script setup>
     import { ref } from 'vue';
     import axios from 'axios';
-import { useRouter } from 'vue-router';
+    import { useRouter } from 'vue-router';
 
     const  search = ref("");
     const  rSearch = ref([]);
     const  router = useRouter()
-
+    const  Token = localStorage.token
     const searchBook = async () => {
         const resultat = await axios.get('https://www.dbooks.org/api/search/'+search.value)
         console.log(resultat.data)
@@ -26,7 +26,8 @@ import { useRouter } from 'vue-router';
             <div class="searchButton">🔎</div> 
         </div> 
         <div class="navlist">
-            <a href="/login">Login</a>
+            <a v-if=" Token != null" href="/logout" >Logout</a>
+            <a v-else href="/login">Login</a>
             <a href="/library">Mylibrary</a>
         </div>
     </div>

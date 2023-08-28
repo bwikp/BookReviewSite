@@ -18,7 +18,8 @@ const LoginCheck = async () => {
   const token = await axios.post('http://localhost:8000/api/login_check',loginInfo)
   
   if (token.status == 200) {
-    router.push({ name: 'home' })
+    // router.push({ name: 'home' })
+    window.location.assign("/")
     console.log("ok")
   } else {
     console.warn(token.statusText)

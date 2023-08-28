@@ -4,7 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import LivrePage from '../views/LivrePage.vue'
 import SearchPage from '../views/SearchPage.vue'
 import MyLibrary from '../views/MyLibrary.vue'
-
+import LogoutView from '../views/LogoutView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/library',
       name: 'library',
       component: MyLibrary
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: LogoutView
     }
   ]
 })
