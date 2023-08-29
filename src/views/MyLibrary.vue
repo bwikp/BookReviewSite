@@ -7,16 +7,12 @@ import jwt_decode from "jwt-decode";
 const router = useRouter()
 
 if (localStorage.length === 0) {
-    // router.push({ name: "login" })
     window.location.assign("/login")
 }
 
 const Token = localStorage.token
 
 const payload = jwt_decode(Token);
-// console.log(localStorage.token)
-// const decoded = jwt_decode(jwt)
-// console.log(payload)
 const userUser = ref([]);
 const defArray = ref([]);
 
@@ -35,20 +31,13 @@ const test = async () => {
     )
     userUser.value = userToPut.data;
 
-    //  console.log(userToPut.value)
     let libArray = [];
-    // let tempArray = [];
     for (let i = 0; i < userUser.value.lib.length; i++) {
-        //    console.log(userUser.value.lib[i].idlivre);
         libArray.push(userUser.value.lib[i].idlivre)
-        //    console.log(libArray)
-        // tempArray.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
         defArray.value.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
-        //    console.log(tempArray)
     }
     console.log(tempArray[0].data)
 
-    // defArray.value = tempArray
 }
 
 
@@ -83,7 +72,10 @@ onBeforeMount(async () => {
             <div v-for="liv in defArray" :key="liv.data.id">
                 <div @click="" class="zoneLivre">
                     <div class="suppButton" @click="delBook(userUser.id, liv.data.id)">
-                        <div></div>
+                        <div>❌</div>
+                    </div>
+                    <div class="noteButton" >
+                        <a href="/note">📝</a>
                     </div>
                     <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
                     <div class="titleZone">
