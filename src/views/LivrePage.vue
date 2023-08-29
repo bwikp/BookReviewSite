@@ -2,7 +2,6 @@
     import { onBeforeMount, ref } from 'vue'
     import axios from 'axios';
     import { useRoute,useRouter } from 'vue-router';
-    import Leheader from '../components/Leheader.vue';
     import jwtDecode from 'jwt-decode';
     const route = useRoute()
     const router = useRouter()
@@ -18,17 +17,19 @@
         leLivre.value = aBook.data;
         return aBook;
     }
+
     
+    let added = ref(false);
     const addOneBook = async () => {
         let tempo = await fetchOneBook();
-        console.log('tempo',tempo.data);
+        // console.log('tempo',tempo.data);
 
             const bookinfo = {
                 "idlivre":tempo.data.id,
-                "note":"Jack",
+                "note":"",
                 "livretitle":tempo.data.title
             }
-            console.log(tempo.data.id)
+            // console.log(tempo.data.id)
           await axios.request({
             headers: { Authorization: `Bearer ${Token}` },
 
@@ -39,12 +40,38 @@
         let code = error.response
                 console.log(code)
             })
-        
-            
+            added.value = true;
     }
+
+    let userInfo = ref([])
+
+    const checkUser = async () => {
+         let check =  await axios.request(
+                {
+                    headers: { Authorization: `Bearer ${Token}`},
+                    method: "GET",
+                    url: `http://localhost:8000/api/user/${+payload.id}`
+                }
+            )
+            let tempo = await fetchOneBook();
+
+            userInfo.value = check.data
+
+            // console.log(userInfo.value.lib[0].idlivre)
+            // console.log(tempo.data.id)
+            for(let i = 0 ;i < userInfo.value.lib.length;i++)
+                {   
+                    console.log("partie 1",userInfo.value.lib[i].idlivre)
+                    if(userInfo.value.lib[i].idlivre == tempo.data.id)
+                    {
+                        added.value = true;
+                    }
+                }
+    }    
 
     onBeforeMount(async () => {
   await fetchOneBook()
+  await checkUser()
 })
 </script>
 <template>
@@ -53,7 +80,8 @@
             <img v-bind:src='leLivre.image'/>
             <div class="livrePclick">
             <a :href="leLivre.download" class="DwdButton" >Download</a>
-            <button class="addButton" @click="addOneBook()" >+</button>
+            <div  v-if="added" class="valider">✅</div>
+            <button v-else class="addButton" @click="addOneBook()" >➕</button>
             </div>
         </div>
         

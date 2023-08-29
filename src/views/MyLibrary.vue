@@ -37,30 +37,36 @@ const test = async () => {
 
     //  console.log(userToPut.value)
     let libArray = [];
-    let tempArray = [];
+    // let tempArray = [];
     for (let i = 0; i < userUser.value.lib.length; i++) {
         //    console.log(userUser.value.lib[i].idlivre);
         libArray.push(userUser.value.lib[i].idlivre)
         //    console.log(libArray)
-        tempArray.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
+        // tempArray.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
+        defArray.value.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
         //    console.log(tempArray)
     }
     console.log(tempArray[0].data)
 
-    defArray.value = tempArray
+    // defArray.value = tempArray
 }
-let toggle = ref(true);
-const delBook = async (id,user) =>{
+
+
+const delBook = async (id, user) => {
+console.warn(id);
+    const index = defArray.value.findIndex(item => item.data.id === user);
+  if (index !== -1) {
+    defArray.value.splice(index, 1);
+  }
+
     await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "DELETE",
         url: `http://localhost:8000/api/lib/delete/${id}/${user}`
-    }).catch(function (error)
-                {
-                    console.log(error)
-                }
+    }).catch(function (error) {
+        console.log(error)
+    }
     )
-    toggle.value = !toggle;
 }
 
 console.log(userUser.value)
@@ -74,13 +80,15 @@ onBeforeMount(async () => {
     <div class="HomePage">
         <h1 class="libTitle">{{ userUser.last_name }}'s Library</h1>
         <div class="gallery">
-            <div v-show="toggle" class="zoneLivre" v-for="liv in defArray">
-            <div class="suppButton" @click="delBook(userUser.id,liv.data.id)">
-                <div></div>
-            </div>
-                <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
-                <div class="titleZone">
-                    <p class="title">{{ liv.data.title }}</p>
+            <div v-for="liv in defArray" :key="liv.data.id">
+                <div @click="" class="zoneLivre">
+                    <div class="suppButton" @click="delBook(userUser.id, liv.data.id)">
+                        <div></div>
+                    </div>
+                    <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
+                    <div class="titleZone">
+                        <p class="title">{{ liv.data.title }}</p>
+                    </div>
                 </div>
             </div>
         </div>
