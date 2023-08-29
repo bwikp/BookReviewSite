@@ -36,7 +36,6 @@ const test = async () => {
     userUser.value = userToPut.data;
 
     //  console.log(userToPut.value)
-    console.log(userUser.value.lib[0])
     let libArray = [];
     let tempArray = [];
     for (let i = 0; i < userUser.value.lib.length; i++) {
@@ -50,17 +49,22 @@ const test = async () => {
 
     defArray.value = tempArray
 }
-const delBook = async (id) =>{
+let toggle = ref(true);
+const delBook = async (id,user) =>{
     await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "DELETE",
-        url: `http://localhost:8000/api/lib/delete/${id}`
+        url: `http://localhost:8000/api/lib/delete/${id}/${user}`
     }).catch(function (error)
                 {
                     console.log(error)
                 }
     )
+    toggle.value = !toggle;
 }
+
+console.log(userUser.value)
+
 onBeforeMount(async () => {
     await test();
 })
@@ -70,8 +74,8 @@ onBeforeMount(async () => {
     <div class="HomePage">
         <h1 class="libTitle">{{ userUser.last_name }}'s Library</h1>
         <div class="gallery">
-            <div class="zoneLivre" v-for="liv in defArray">
-            <div class="suppButton" @click="delBook(liv.data.id)">
+            <div v-show="toggle" class="zoneLivre" v-for="liv in defArray">
+            <div class="suppButton" @click="delBook(userUser.id,liv.data.id)">
                 <div></div>
             </div>
                 <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
