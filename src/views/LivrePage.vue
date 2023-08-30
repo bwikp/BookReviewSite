@@ -7,8 +7,12 @@
     const router = useRouter()
 
     const Token = localStorage.token
+    console.log("Token",localStorage)
+    if( localStorage.length !== 0)
+        {
     const payload = jwtDecode(Token)
-    const idBook = route.params.id
+        }
+    const idBook = route.params.id.toLowerCase()
     const leLivre = ref([]);
     const fetchOneBook = async () => { 
         let aBook =  await  axios.get('https://www.dbooks.org/api/book/'+idBook) 
@@ -71,7 +75,7 @@
 
     onBeforeMount(async () => {
   await fetchOneBook()
-  await checkUser()
+//   await checkUser()
 })
 </script>
 <template>
