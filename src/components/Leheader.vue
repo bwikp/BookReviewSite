@@ -30,7 +30,7 @@ const searchBook = async () => {
         <div class="navlist zoneNav pasMobile">
             <a v-if="Token != null" href="/logout">Logout</a>
             <a v-else href="/login">Login</a>
-            <a href="/library">📚📚</a>
+            <a href="/library">MyLibrary</a>
         </div>
         <div class="burgerMenu">
                <div></div>

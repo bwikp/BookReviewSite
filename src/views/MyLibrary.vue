@@ -22,7 +22,7 @@ const test = async () => {
         method: "GET",
         url: `http://localhost:8000/api/user/${+payload.id}`
     }).catch(function (error) {
-        let code = error.response.status
+        let code = error.reponse.status
         if (code === 401) {
             router.push({ name: "login" })
         }
@@ -49,7 +49,7 @@ const delBook = async (id, user) => {
         method: "DELETE",
         url: `http://localhost:8000/api/lib/delete/${id}/${user}`
     }).catch(function (error) {
-        console.log(error)
+        console.log(error.response.status)
     }
     )
 }

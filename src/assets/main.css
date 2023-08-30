@@ -12,7 +12,7 @@
   justify-content: center;
   gap: 20px;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 
 .login input,.formRegister input{
@@ -59,7 +59,9 @@
   position: relative;
   font-family: sans-serif;
 }
-
+.navlist a:hover{
+    transform: scale(1.1);
+}
 .HomePage{
   display: flex;
   flex-direction: column;
@@ -78,6 +80,8 @@
   grid-template-columns: repeat(4,1fr);
   grid-gap: 50px;
 }
+
+
 .suppButton,.noteButton{
   
   position: absolute;
@@ -195,7 +199,7 @@ input:focus, textarea:focus {
   padding: 2%;
   height: 10%;
   display: flex;
-  font-family: 'ADLaM Display';
+  font-family: 'Lato', sans-serif;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
