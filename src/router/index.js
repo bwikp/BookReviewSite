@@ -45,7 +45,7 @@ const router = createRouter({
       component: LogoutView
     },
     {
-      path: '/note',
+      path: '/note/:b',
       name: 'note',
       component: NoteUserVue
     }
