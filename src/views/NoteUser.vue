@@ -6,32 +6,43 @@ import axios from 'axios';
 
 const router = useRouter()
 const route = useRoute();
-const book = route.params.b
+const book = route.params.b.toLowerCase()
 const Token = localStorage.token
 const payload = jwt_decode(Token);
+const Note = ref([])
 
-const titleNote = ref([])
-const getUser = async () =>
-{
-    const userToPut = await axios.request({
-        headers: { Authorization: `Bearer ${Token} ` },
+const getlib = async () => { 
+  let datalib =  await axios.request(
+    {
+        headers: {Authorization: `Bearer ${Token}`},
         method: "GET",
-        url: `http://localhost:8000/api/user/${+payload.id}`
-    }).catch(function (error) {
-        let code = error.response.status
-        if (code === 401) {
-            router.push({ name: "login" })
-        }
-    }
-    )
-    console.log(userToPut.data)
-    titleNote.value = userToPut.data
+        url: `http://localhost:8000/api/lib/${payload.id}/${book}`
+    }).catch(function (error)
+        {
+            console.log(error.response.status)
+        })
+    console.log(datalib.data)
+    Note.value = datalib.data
+}
 
+const noteLivre = async () => {
+    const NoteEdit = await axios.request(
+        {
+            headers: { Authorization: `Bearer ${Token}` },
+            method: "PUT",
+            url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`
+        }
+    )
 }
 onBeforeMount(
     async () => {
-        await getUser()
+        await getlib()
     }
 )
 </script>
-<template>{{ titleNote }}</template>
+<template>
+    <h1>{{ Note.livretitle }}</h1>
+    <div>
+        <p>{{  Note.note }}</p>
+        </div>
+</template>
