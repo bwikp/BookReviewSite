@@ -23,7 +23,7 @@ const test = async () => {
         method: "GET",
         url: `http://localhost:8000/api/user/${+payload.id}`
     }).catch(function (error) {
-        let code = error.reponse.status
+        let code = error.response.status
         if (code === 401) {
             router.push({ name: "login" })
         }
@@ -33,7 +33,7 @@ const test = async () => {
 
     let libArray = [];
     for (let i = 0; i < userUser.value.lib.length; i++) {
-        libArray.push(userUser.value.lib[i].idlivre)
+        libArray.push(userUser.value.lib[i].idlivre.toLowerCase())
         defArray.value.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
     }
 

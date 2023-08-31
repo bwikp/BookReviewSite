@@ -10,39 +10,60 @@ const book = route.params.b.toLowerCase()
 const Token = localStorage.token
 const payload = jwt_decode(Token);
 const Note = ref([])
+const txtaera = ref('');
+const displayNote =  ref(true)
 
-const getlib = async () => { 
-  let datalib =  await axios.request(
-    {
-        headers: {Authorization: `Bearer ${Token}`},
-        method: "GET",
-        url: `http://localhost:8000/api/lib/${payload.id}/${book}`
-    }).catch(function (error)
+const getlib = async () => {
+    let datalib = await axios.request(
         {
-            console.log(error.response.status)
-        })
+            headers: { Authorization: `Bearer ${Token}` },
+            method: "GET",
+            url: `http://localhost:8000/api/lib/${payload.id}/${book}`
+        }).catch(function (error) {
+        let code = error.response.status
+        if (code === 401) {
+            router.push({ name: "login" })
+        }
+    }
+    )
     console.log(datalib.data)
     Note.value = datalib.data
+    txtaera.value = datalib.data.note
 }
 
 const noteLivre = async () => {
-    const NoteEdit = await axios.request(
-        {
+    const jsonNote =
+        {   idlivre:book,
+            note:txtaera.value,
+            livretitle:Note.livretitle
+        }   
+     await axios.request(
+        {  
             headers: { Authorization: `Bearer ${Token}` },
             method: "PUT",
-            url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`
+            url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`,
+            data: jsonNote
         }
     )
+    displayNote.value = !displayNote.value
 }
 onBeforeMount(
     async () => {
         await getlib()
     }
 )
+
 </script>
 <template>
-    <h1>{{ Note.livretitle }}</h1>
-    <div>
-        <p>{{  Note.note }}</p>
+    <div class="notePage">
+        <h2>{{ Note.livretitle }}</h2>
+        <div v-if="displayNote">
+            <p>{{ txtaera }}</p>
+            <input type="button" value="edit" @click="displayNote = !displayNote">
         </div>
+        <div v-else class="editnoteZone" >
+            <textarea v-model="txtaera">{{ Note.note }}</textarea>
+            <input id="editButton" type="button" value="save" @click="noteLivre()">
+        </div>
+    </div>
 </template>

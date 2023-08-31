@@ -1,7 +1,6 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import Leheader from '../components/Leheader.vue';
 import axios from 'axios';
 const route = useRoute()
 

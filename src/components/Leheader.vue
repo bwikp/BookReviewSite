@@ -23,7 +23,7 @@ const searchBook = async () => {
         <div class="zoneNav"><a href='/'><img src="../assets/book-wnb.png"></a>
         </div>
         <div class="thirdNav zoneNav pasMobile">
-            <input type="text" @change="searchBook" class="navSearch" placeholder="Enter the book of your dream"
+            <input type="text" @change="searchBook" class="navSearch" placeholder="Search"
                 v-model="search">
             <p class="searchButton">🔎</p>
         </div>
