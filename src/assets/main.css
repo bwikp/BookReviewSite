@@ -119,12 +119,15 @@
   
 }
 .suppButton{
-  right: 2vh;
+  right: 0;
   height: 1vh;
   width: 1vh;
 }
-.suppButton p{
-  font-size: 20px;
+
+.suppButton div{
+  position: absolute;
+  z-index: 100000;
+  right: 0;
 }
 .noteButton{
   left:0;

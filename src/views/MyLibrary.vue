@@ -68,13 +68,11 @@ onBeforeMount(async () => {
         <div class="gallery">
             <div v-for="liv in defArray" :key="liv.data.id">
                 <div @click="" class="zoneLivre">
-                    <div class="suppButton" @click="delBook(userUser.id, liv.data.id)">
-                        <div>
-                         <p>❌</p>
-                        </div>
-                    </div>
                     <div class="noteButton" >
                         <a v-bind:href="'/note/' + liv.data.id">📝</a>
+                    </div>
+                    <div class="suppButton" @click="delBook(userUser.id, liv.data.id)">
+                         <div>❌</div>
                     </div>
                     <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
                     <div class="titleZonelib">
