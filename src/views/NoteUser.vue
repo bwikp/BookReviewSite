@@ -11,7 +11,7 @@ const Token = localStorage.token
 const payload = jwt_decode(Token);
 const Note = ref([])
 const txtaera = ref('');
-const displayNote =  ref(true)
+const displayNote = ref(true)
 
 const getlib = async () => {
     let datalib = await axios.request(
@@ -20,12 +20,12 @@ const getlib = async () => {
             method: "GET",
             url: `http://localhost:8000/api/lib/${payload.id}/${book}`
         }).catch(function (error) {
-        let code = error.response.status
-        if (code === 401) {
-            router.push({ name: "login" })
+            let code = error.response.status
+            if (code === 401) {
+                router.push({ name: "login" })
+            }
         }
-    }
-    )
+        )
     console.log(datalib.data)
     Note.value = datalib.data
     txtaera.value = datalib.data.note
@@ -33,12 +33,13 @@ const getlib = async () => {
 
 const noteLivre = async () => {
     const jsonNote =
-        {   idlivre:book,
-            note:txtaera.value,
-            livretitle:Note.livretitle
-        }   
-     await axios.request(
-        {  
+    {
+        idlivre: book,
+        note: txtaera.value,
+        livretitle: Note.livretitle
+    }
+    await axios.request(
+        {
             headers: { Authorization: `Bearer ${Token}` },
             method: "PUT",
             url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`,
@@ -57,13 +58,13 @@ onBeforeMount(
 <template>
     <div class="notePage">
         <h2>{{ Note.livretitle }}</h2>
-        <div v-if="displayNote">
+        <div class="noteContent" v-if="displayNote">
             <p>{{ txtaera }}</p>
-            <input type="button" value="edit" @click="displayNote = !displayNote">
         </div>
-        <div v-else class="editnoteZone" >
+        <div  v-else class="noteContent editnoteZone">
             <textarea v-model="txtaera">{{ Note.note }}</textarea>
-            <input id="editButton" type="button" value="save" @click="noteLivre()">
         </div>
+            <input v-if="displayNote" id="editButton" type="button" value="edit" @click="noteLivre()">
+            <input v-else id="editButton" type="button" value="save" @click="noteLivre()">
     </div>
 </template>

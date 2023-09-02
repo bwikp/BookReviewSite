@@ -393,4 +393,18 @@ body,html,#app{
   width: 35%;
 }
 
+.notePage h2{
+  font-size: 20px;
+}
+.noteContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 80%;
+  width: 80%;
+}
 
+.noteContent textarea, .noteContent p{
+   margin-top: 20px;
+}
