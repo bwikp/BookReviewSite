@@ -404,7 +404,26 @@ body,html,#app{
   height: 80%;
   width: 80%;
 }
-
+#editButton{
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  border: solid 2px black;
+}
 .noteContent textarea, .noteContent p{
    margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.noteContent textarea{
+    height: 80%;
+    width: 100%;
+    padding: 2%;
+}
+.noteContent p{
+  border: solid 1px white;
+  height: 90%;
+  width: 100%;
 }
