@@ -38,4 +38,9 @@ const searchBook = async () => {
                <div></div>
         </div>
     </div>
+    <div class="menuSlide">
+        <a v-if="Token != null" href="/logout">Logout</a>
+            <a v-else href="/login">Login</a>
+            <a href="/library">MyLibrary</a>
+    </div>
 </template>

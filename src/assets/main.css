@@ -315,6 +315,24 @@ body,html,#app{
       width: 70%;
   }
 
+  .menuSlide {
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    background: rgb(73, 84, 177);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .menuSlide a {
+    height: 50px;
+    width: 100%;
+    border: 1px solid #c0cbda;
+    padding: 5px;
+  }
   .burgerMenu div{
       width: 30px;
       height: 5px;
