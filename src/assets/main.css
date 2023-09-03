@@ -307,6 +307,9 @@ body,html,#app{
 .burgerMenu{
   display: none;
 }
+.menuSlide{
+  display: none;
+}
 @media (max-width:1050px) {
   .nav{
     height: 7.5%;
@@ -315,9 +318,10 @@ body,html,#app{
       width: 70%;
   }
 
+
   .menuSlide {
     position: absolute;
-    height: 80%;
+    height: 30%;
     width: 100%;
     background: rgb(73, 84, 177);
     z-index: 99999;
@@ -325,15 +329,16 @@ body,html,#app{
     flex-direction: column;
     align-items: center;
     justify-content: start;
+    transition: width 200ms ease-in ;
   }
-
   .menuSlide a {
     height: 50px;
     width: 100%;
     border: 1px solid #c0cbda;
     padding: 5px;
+    text-align: center;
   }
-  .burgerMenu div{
+  .burgerLine{
       width: 30px;
       height: 5px;
       background: white;

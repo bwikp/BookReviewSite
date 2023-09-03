@@ -16,6 +16,7 @@ const searchBook = async () => {
     // router.push({path: '/search/'+search.value})
     location.replace('/search/' + search.value)
 }
+let show = ref(false);
 </script>
 
 <template>
@@ -23,8 +24,7 @@ const searchBook = async () => {
         <div class="zoneNav"><a href='/'><img src="../assets/book-wnb.png"></a>
         </div>
         <div class="thirdNav zoneNav pasMobile">
-            <input type="text" @change="searchBook" class="navSearch" placeholder="Search"
-                v-model="search">
+            <input type="text" @change="searchBook" class="navSearch" placeholder="Search" v-model="search">
             <p class="searchButton">🔎</p>
         </div>
         <div class="navlist zoneNav pasMobile">
@@ -32,15 +32,15 @@ const searchBook = async () => {
             <a v-else href="/login">Login</a>
             <a href="/library">MyLibrary</a>
         </div>
-        <div class="burgerMenu">
-               <div></div>
-               <div></div>
-               <div></div>
+        <div class="burgerMenu" @click="show = !show">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
         </div>
     </div>
-    <div class="menuSlide">
+    <div v-show="show" class="menuSlide">
         <a v-if="Token != null" href="/logout">Logout</a>
-            <a v-else href="/login">Login</a>
-            <a href="/library">MyLibrary</a>
+        <a v-else href="/login">Login</a>
+        <a href="/library">MyLibrary</a>
     </div>
 </template>
