@@ -21,9 +21,8 @@ let show = ref(false);
 
 <template>
     <div class="nav">
-        <div class="zoneNav"><a href='/'><img src="../assets/book-wnb.png"></a>
-        </div>
-        <div class="thirdNav zoneNav pasMobile">
+        <div class="zoneNav"><a href='/'><img src="../assets/book-wnb.png"></a></div>
+        <div id="SearchMobile" class="thirdNav zoneNav ">
             <input type="text" @change="searchBook" class="navSearch" placeholder="Search" v-model="search">
             <p class="searchButton">🔎</p>
         </div>

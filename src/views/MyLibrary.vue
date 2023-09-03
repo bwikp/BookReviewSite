@@ -3,13 +3,14 @@ import { onBeforeMount, ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import jwt_decode from "jwt-decode";
+import { decode } from 'html-entities';
 
 const router = useRouter()
 
 if (localStorage.length === 0) {
     window.location.assign("/login")
 }
-
+decode('&lt; &gt; &quot; &apos; &amp; &#169; &#8710;&#039;s ;');
 const Token = localStorage.token
 
 const payload = jwt_decode(Token);
@@ -54,7 +55,6 @@ const delBook = async (id, user) => {
     }
     )
 }
-
 console.log(userUser.value)
 
 onBeforeMount(async () => {

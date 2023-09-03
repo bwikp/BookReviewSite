@@ -23,13 +23,15 @@ onBeforeMount(async () => {
 <template>
   <div class="HomePage">
     <div class="gallery">
-      <div class="zoneLivre" v-for="item in rSearch">
+      <div v-for="item in rSearch">
+      <div class="zoneLivre">
         <a v-bind:href="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></a>
-        <div class="titleZone">
+        <div class="titleZonelib">
           <p class="title">{{ item.title }}</p>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <style scoped></style>
