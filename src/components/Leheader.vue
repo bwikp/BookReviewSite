@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { useRouter } from 'vue-router';
-
+import { useRouter,RouterLink } from 'vue-router';
 const search = ref("");
 const rSearch = ref([]);
 const router = useRouter()
@@ -12,8 +11,6 @@ const searchBook = async () => {
     console.log(resultat.data)
     console.log(search.value)
     rSearch.value = resultat.data.books
-    // console.log(rSearch.value)
-    // router.push({path: '/search/'+search.value})
     location.replace('/search/' + search.value)
 }
 let show = ref(false);
@@ -21,15 +18,15 @@ let show = ref(false);
 
 <template>
     <div class="nav">
-        <div class="zoneNav"><a href='/'><img src="../assets/book-wnb.png"></a></div>
+        <div class="zoneNav"><RouterLink to='/'><img src="../assets/book-wnb.png"></RouterLink></div>
         <div id="SearchMobile" class="thirdNav zoneNav ">
             <input type="text" @change="searchBook" class="navSearch" placeholder="Search" v-model="search">
             <p class="searchButton">🔎</p>
         </div>
         <div class="navlist zoneNav pasMobile">
-            <a v-if="Token != null" href="/logout">Logout</a>
-            <a v-else href="/login">Login</a>
-            <a href="/library">MyLibrary</a>
+            <RouterLink v-if="Token != null" to="/logout">Logout</RouterLink>
+            <RouterLink v-else to="/login">Login</RouterLink>
+            <RouterLink to="/library">MyLibrary</RouterLink>
         </div>
         <div class="burgerMenu" @click="show = !show">
             <div class="burgerLine"></div>
@@ -38,8 +35,8 @@ let show = ref(false);
         </div>
     </div>
     <div v-show="show" class="menuSlide">
-        <a v-if="Token != null" href="/logout">Logout</a>
-        <a v-else href="/login">Login</a>
-        <a href="/library">MyLibrary</a>
+        <RouterLink v-if="Token != null" to="/logout">Logout</RouterLink>
+        <RouterLink v-else to="/login">Login</RouterLink>
+        <RouterLink to="/library">MyLibrary</RouterLink>
     </div>
 </template>

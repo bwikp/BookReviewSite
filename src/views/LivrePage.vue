@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 import jwtDecode from 'jwt-decode';
 import { decode } from 'html-entities';
 
+
 const route = useRoute()
 const router = useRouter()
 
@@ -90,9 +91,9 @@ onBeforeMount(async () => {
         <div class="LivrePdes">
             <h2>{{ decode(leLivre.title) }}</h2>
             <h3>{{ leLivre.subtitle }}</h3>
-            <p>description: {{ leLivre.description }}</p>
-            <div>authors: {{ leLivre.authors }}</div>
-            <div>publisher: {{ leLivre.publisher }}</div>
+            <p>description: {{ decode(leLivre.description) }}</p>
+            <div>authors: {{ decode(leLivre.authors) }}</div>
+            <div>publisher: {{ decode(leLivre.publisher) }}</div>
             <div> number of pages: {{ leLivre.pages }}</div>
             <div>year:{{ leLivre.year }}</div>
         </div>

@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter, useRoute,RouterLink } from 'vue-router';
 import axios from 'axios';
 import { decode } from 'html-entities';
 const route = useRoute()
@@ -26,7 +26,7 @@ onBeforeMount(async () => {
     <div class="gallery">
       <div v-for="item in rSearch">
       <div class="zoneLivre">
-        <a v-bind:href="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></a>
+        <RouterLink v-bind:to="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></RouterLink>
         <div class="titleZonelib">
           <p class="title">{{ decode(item.title) }}</p>
         </div>

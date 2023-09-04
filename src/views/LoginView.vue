@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-
+import { RouterLink } from 'vue-router';
 
 
 const email = ref('')
@@ -38,8 +38,16 @@ const LoginCheck = async () => {
     <div class="loginZone">    
       <input type="text" placeholder="email" v-model="email" required>
       <input type="password" placeholder="password" v-model="password" required>
+      <RouterLink class="linkLogin" to="/register">Sign in</RouterLink>
       <input class="DwdButton" type="button" value="login" @click="LoginCheck()">
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+  .linkLogin{
+    color: black;
+    margin-left: 50%;
+    text-decoration: underline;
+  }
+  
+</style>

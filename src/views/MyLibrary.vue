@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
 import axios from 'axios';
-import { useRouter } from 'vue-router';
+import { useRouter,RouterLink } from 'vue-router';
 import jwt_decode from "jwt-decode";
 import { decode } from 'html-entities';
 
@@ -69,12 +69,12 @@ onBeforeMount(async () => {
             <div v-for="liv in defArray" :key="liv.data.id">
                 <div @click="" class="zoneLivre">
                     <div class="noteButton" >
-                        <a v-bind:href="'/note/' + liv.data.id">📝</a>
+                        <RouterLink v-bind:to="'/note/' + liv.data.id">📝</RouterLink>
                     </div>
                     <div class="suppButton" @click="delBook(userUser.id, liv.data.id)">
                          <div>❌</div>
                     </div>
-                    <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
+                    <RouterLink v-bind:to="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></RouterLink>
                     <div class="titleZonelib">
                         <p class="title">{{ decode(liv.data.title) }}</p>
                     </div>
