@@ -335,9 +335,8 @@ body,html,#app{
     z-index: 99999;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: start;
-    transition: width 200ms ease-in ;
   }
   .menuSlide a {
     height: 50px;
