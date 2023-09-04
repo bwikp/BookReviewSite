@@ -3,7 +3,7 @@ import { onBeforeMount, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router';
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
-
+import { decode } from 'html-entities';
 const router = useRouter()
 const route = useRoute();
 const book = route.params.b.toLowerCase()
@@ -57,7 +57,7 @@ onBeforeMount(
 </script>
 <template>
     <div class="notePage">
-        <h2>{{ Note.livretitle }}</h2>
+        <h2>{{ decode(Note.livretitle) }}</h2>
         <div class="noteContent" v-if="displayNote">
             <p>{{ txtaera }}</p>
         </div>

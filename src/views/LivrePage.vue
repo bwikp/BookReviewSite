@@ -3,6 +3,7 @@ import { onBeforeMount, ref } from 'vue'
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
 import jwtDecode from 'jwt-decode';
+import { decode } from 'html-entities';
 
 const route = useRoute()
 const router = useRouter()
@@ -87,7 +88,7 @@ onBeforeMount(async () => {
         </div>
 
         <div class="LivrePdes">
-            <h2>{{ leLivre.title }}</h2>
+            <h2>{{ decode(leLivre.title) }}</h2>
             <h3>{{ leLivre.subtitle }}</h3>
             <p>description: {{ leLivre.description }}</p>
             <div>authors: {{ leLivre.authors }}</div>

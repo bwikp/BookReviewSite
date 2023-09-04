@@ -2,6 +2,7 @@
 import { onBeforeMount, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import axios from 'axios';
+import { decode } from 'html-entities';
 const route = useRoute()
 
 const search = route.params.sq;
@@ -27,7 +28,7 @@ onBeforeMount(async () => {
       <div class="zoneLivre">
         <a v-bind:href="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></a>
         <div class="titleZonelib">
-          <p class="title">{{ item.title }}</p>
+          <p class="title">{{ decode(item.title) }}</p>
         </div>
       </div>
     </div>

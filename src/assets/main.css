@@ -337,6 +337,7 @@ body,html,#app{
     flex-direction: column;
     align-items: start;
     justify-content: start;
+    transition: width 200ms ease-in ;
   }
   .menuSlide a {
     height: 50px;

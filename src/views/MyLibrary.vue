@@ -76,7 +76,7 @@ onBeforeMount(async () => {
                     </div>
                     <a v-bind:href="'/book/' + liv.data.id"><img class="pimg" v-bind:src='liv.data.image' /></a>
                     <div class="titleZonelib">
-                        <p class="title">{{ liv.data.title }}</p>
+                        <p class="title">{{ decode(liv.data.title) }}</p>
                     </div>
                 </div>
             </div>
