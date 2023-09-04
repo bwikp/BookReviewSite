@@ -18,8 +18,8 @@ const LoginCheck = async () => {
   const token = await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
   
   if (token.status == 200) {
-    // router.push({ name: 'home' })
-    window.location.assign("/")
+    router.push({ name: 'home' })
+    // window.location.assign("/")
     console.log("ok")
   } else {
     console.warn(token.statusText)
