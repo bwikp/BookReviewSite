@@ -28,10 +28,10 @@ const registerUser = async () => {
     <div class="formRegister">
         <h2>Register</h2>
         <div class="RegisterZone">    
-            <input type="text" placeholder="email" v-model="email">
-            <input type="text" placeholder="password" v-model="password">
-            <input type="text" placeholder="first_name" v-model="first_name">
-            <input type="text" placeholder="last_name" v-model="last_name">
+            <input type="text" placeholder="email" required="required" v-model="email">
+            <input type="text" placeholder="password" required="required" v-model="password">
+            <input type="text" placeholder="first_name" required="required" v-model="first_name">
+            <input type="text" placeholder="last_name"  required="required" v-model="last_name">
             <RouterLink class="linkRegister" to="/login">Sign up</RouterLink>
             <input id="DwdRegister" type="button" value="register"  @click="registerUser()">
         </div>
