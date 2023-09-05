@@ -26,7 +26,7 @@ const test = async () => {
     }).catch(function (error) {
         let code = error.response.status
         if (code === 401) {
-            router.push({ name: "login" })
+            router.push({ name: 'login' })
         }
     }
     )
