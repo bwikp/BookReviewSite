@@ -6,7 +6,7 @@ import Leheader from './components/Leheader.vue';
 
 <template>
   <Leheader/>
-  <RouterView />
+  <RouterView :key="$route.path" />
 </template>
 
 <style scoped>

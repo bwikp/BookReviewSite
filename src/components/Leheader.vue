@@ -11,9 +11,10 @@ const searchBook = async () => {
     console.log(resultat.data)
     console.log(search.value)
     rSearch.value = resultat.data.books
-    location.replace('/search/' + search.value)
+    router.push({path: '/search/'+search.value})
 }
 let show = ref(false);
+
 </script>
 
 <template>
@@ -21,7 +22,7 @@ let show = ref(false);
         <div class="zoneNav"><RouterLink to='/'><img src="../assets/book-wnb.png"></RouterLink></div>
         <div id="SearchMobile" class="thirdNav zoneNav ">
             <input type="text" @change="searchBook" class="navSearch" placeholder="Search" v-model="search">
-            <p class="searchButton">🔎</p>
+            <p class="searchButton" @click="searchBook">🔎</p>
         </div>
         <div class="navlist zoneNav pasMobile">
             <RouterLink v-if="Token != null" to="/logout">Logout</RouterLink>

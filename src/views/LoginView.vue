@@ -18,7 +18,8 @@ const LoginCheck = async () => {
   const token = await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
   
   if (token.status == 200) {
-    router.push({ name: 'home' })
+    // router.push({ name: 'home' })
+    window.location.replace('/')
     // window.location.assign("/")
     console.log("ok")
   } else {
@@ -35,9 +36,11 @@ const LoginCheck = async () => {
 <template>
   <div class="login">
     <h2>Login</h2>
-    <div class="loginZone">    
-      <input type="text" placeholder="email" v-model="email" required>
-      <input type="password" placeholder="password" v-model="password" required>
+    <div class="loginZone">
+      <label for="email">email</label>
+      <input type="text" name="email" placeholder="email" v-model="email" required>
+      <label for="password">password</label>
+      <input type="password" name="password" placeholder="password" v-model="password" required>
       <RouterLink class="linkLogin" to="/register">Sign in</RouterLink>
       <input class="DwdButton" type="button" value="login" @click="LoginCheck()">
     </div>
@@ -48,6 +51,9 @@ const LoginCheck = async () => {
     color: black;
     margin-left: 50%;
     text-decoration: underline;
+  }
+  .loginZone{
+    color: black;
   }
   
 </style>
