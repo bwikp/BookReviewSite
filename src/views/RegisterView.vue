@@ -10,8 +10,8 @@ const last_name = ref('')
 const router = useRouter()
 
 const regexMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-const regexPassword = /^.{6,}$/
-
+const regexPassword = /^.{6,20}$/
+const regexName = /^.{3,20}$/
 const registerUser = async () => {
     const infoUser = {
         email: email.value,
@@ -42,7 +42,7 @@ const registerUser = async () => {
             <label for="lname">last name</label>
             <input type="text" name="lname" placeholder="last_name"  v-model="last_name">
             <RouterLink class="linkRegister" to="/login">Sign up</RouterLink>
-            <input v-if="regexMail.test(email) == true  && regexPassword.test(password) == true " id="DwdRegister" type="button" value="register"  @click="registerUser()">
+            <input v-if="regexMail.test(email) == true  && regexPassword.test(password) == true && regexName.test(first_name) == true && regexName.test(last_name)" id="DwdRegister" type="button" value="register"  @click="registerUser()">
         </div>
     </div>
 </template>
