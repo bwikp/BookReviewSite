@@ -432,9 +432,7 @@ body,html,#app{
   width: 35%;
 }
 
-.notePage h2{
-  font-size: 20px;
-}
+
 .noteContent{
   display: flex;
   flex-direction: column;

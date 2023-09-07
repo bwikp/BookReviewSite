@@ -68,3 +68,9 @@ onBeforeMount(
             <input v-else id="editButton" type="button" value="save" @click="noteLivre()">
     </div>
 </template>
+<style scoped>
+  .notePage h2{
+  font-size: 20px;
+  margin: 3%;
+}
+</style>

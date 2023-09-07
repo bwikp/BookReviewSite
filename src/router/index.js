@@ -6,6 +6,7 @@ import SearchPage from '../views/SearchPage.vue'
 import MyLibrary from '../views/MyLibrary.vue'
 import LogoutView from '../views/LogoutView.vue'
 import NoteUserVue from '../views/NoteUser.vue'
+import NotFound from '../views/NotFound.vue'
 const router = createRouter({
   mode: 'history',
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,6 +50,11 @@ const router = createRouter({
       path: '/note/:b',
       name: 'note',
       component: NoteUserVue
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })
