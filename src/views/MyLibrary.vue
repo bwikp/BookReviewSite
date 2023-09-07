@@ -22,7 +22,7 @@ const test = async () => {
     const userToPut = await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "GET",
-        url: `https://michel.cciformationlyon.fr/api/user/${+payload.id}`
+        url: `http://localhost:8000/api/user/${+payload.id}`
     }).catch(function (error) {
         let code = error.response.status
         if (code === 401) {
@@ -37,7 +37,7 @@ const test = async () => {
         libArray.push(userUser.value.lib[i].idlivre.toLowerCase())
         defArray.value.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
     }
-
+    console.log(userUser.value)
 }
     console.log(userUser.value)
 const delBook = async (id, user) => {
@@ -49,11 +49,12 @@ const delBook = async (id, user) => {
     await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "DELETE",
-        url: `https://michel.cciformationlyon.fr/api/lib/delete/${id}/${user}`
+        url: `http://localhost:8000/api/lib/delete/${id}/${user}`
     }).catch(function (error) {
         console.log(error.response.status)
     }
     )
+    // https://michel.cciformationlyon.fr/
 }
 console.log(userUser.value)
 

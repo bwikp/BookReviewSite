@@ -39,7 +39,7 @@ const addOneBook = async () => {
         headers: { Authorization: `Bearer ${Token}` },
 
         method: "POST",
-        url: `https://michel.cciformationlyon.fr/api/lib/new/${payload.id}`,
+        url: `http://localhost:8000/api/lib/new/${payload.id}`,
         data: bookinfo
     }).then(function (response)
         {
@@ -72,7 +72,7 @@ const checkUser = async () => {
         {
             headers: { Authorization: `Bearer ${Token}` },
             method: "GET",
-            url: `https://michel.cciformationlyon.fr/api/user/${payload.id}`
+            url: `http://localhost:8000/api/user/${payload.id}`
         }
     )
     let tempo = await fetchOneBook();
