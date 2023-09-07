@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, ref, resolveComponent } from 'vue'
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
 import jwtDecode from 'jwt-decode';
@@ -41,11 +41,28 @@ const addOneBook = async () => {
         method: "POST",
         url: `https://michel.cciformationlyon.fr/api/lib/new/${payload.id}`,
         data: bookinfo
-    }).catch(function (error) {
-        let code = error.response
-        console.log(code)
-    })
-    added.value = true;
+    }).then(function (response)
+        {
+            if(response.status === 200)
+            {
+                 added.value = true;
+            }
+        // console.log(response.status)
+        }).catch(function (error)
+            {
+                if(error.response.status === 401)
+                    {
+                        router.push({ name: "login" })
+                    }
+                
+            })
+    //catch(function (error) {
+    //     let code = error.response
+    //     console.log(code.status)
+    //     if( code.status === '401' )
+    //         {
+    //         }
+    // })
 }
 
 let userInfo = ref([])

@@ -40,7 +40,7 @@ const LoginCheck = async () => {
     <h2>Login</h2>
     <div class="loginZone">
       <label for="email">email</label>
-      <input type="text" name="email" @change="console.log(regexMail.test(email))" placeholder="email" v-model="email"  />
+      <input type="text" name="email"  placeholder="email" v-model="email"  />
       <p v-if="!regexMail.test(email) && email != '' ">please enter a valid mail adress !!!</p>
       <label for="password">password</label>
       <input type="password" name="password" placeholder="password" v-model="password" >
