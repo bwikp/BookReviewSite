@@ -28,7 +28,6 @@ const getlib = async () => {
             }
         }
         )
-    console.log(datalib.data)
     Note.value = datalib.data
     txtaera.value = datalib.data.note
 }

@@ -12,7 +12,6 @@ const searchBook = async () => {
     await axios.get('https://www.dbooks.org/api/search/' + search)
   .then(function (response)
   {
-    console.log(response.data)
 
     if(response.data.status == "ok")
     {

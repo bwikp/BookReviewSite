@@ -5,9 +5,7 @@ import { RouterLink } from 'vue-router';
 const RecentBook = ref([]);
 const fetchRecentBooks = async () => {
   let livre = await axios.get('https://www.dbooks.org/api/recent')
-  console.log(livre.data)
   RecentBook.value = livre.data.books
-  console.log(RecentBook.value)
 }
 
 onBeforeMount(async () => {

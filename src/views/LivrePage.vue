@@ -20,13 +20,10 @@ const leLivre = ref([]);
 let   badSearch  = ref(false)
 
 const fetchOneBook = async () => {
-    // try{
 
     let aBook = await fetch('https://www.dbooks.org/api/book/' + idBook)
     if(!aBook.ok)
             {
-                // throw new Error(`HTTP error! status: ${aBook.status}`);
-                console.log(aBook.status)
                 badSearch.value = true
             }
             else{
@@ -34,20 +31,6 @@ const fetchOneBook = async () => {
     leLivre.value = res;
     return res;
             }
-    // }
-    // catch(error)
-    // {
-    //     console.log(error)
-    // }
-    // console.log('aBook',aBook)
-    // if(aBook.data.status === 'ok')
-    //     {
-    // return aBook;
-    //     }
-    // if(aBook.data.status !== ok )
-    //     {
-    //         badSearch.value  = !badSearch.value
-    //     }
 }
 
 

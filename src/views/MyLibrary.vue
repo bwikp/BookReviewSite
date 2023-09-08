@@ -37,9 +37,7 @@ const test = async () => {
         libArray.push(userUser.value.lib[i].idlivre.toLowerCase())
         defArray.value.push(await axios.get('https://www.dbooks.org/api/book/' + libArray[i]))
     }
-    console.log(userUser.value)
 }
-    console.log(userUser.value)
 const delBook = async (id, user) => {
     const index = defArray.value.findIndex(item => item.data.id === user);
   if (index !== -1) {
