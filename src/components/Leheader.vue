@@ -1,16 +1,14 @@
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 import { useRouter,RouterLink } from 'vue-router';
 const search = ref("");
-const rSearch = ref([]);
 const router = useRouter()
 const Token = localStorage.token
 const searchBook = async () => {
-    const resultat = await axios.get('https://www.dbooks.org/api/search/' + search.value)
-    console.log(resultat.data)
-    console.log(search.value)
-    rSearch.value = resultat.data.books
+    // const resultat = await axios.get('https://www.dbooks.org/api/search/' + search.value)
+    // console.log(resultat.data)
+    // console.log(search.value)
+    // rSearch.value = resultat.data.books
     router.push({path: '/search/'+search.value})
 }
 let show = ref(false);

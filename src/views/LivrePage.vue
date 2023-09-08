@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref, resolveComponent } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
 import jwtDecode from 'jwt-decode';
@@ -17,12 +17,37 @@ if (localStorage.length !== 0) {
 }
 const idBook = route.params.id.toLowerCase()
 const leLivre = ref([]);
-
+let   badSearch  = ref(false)
 
 const fetchOneBook = async () => {
-    let aBook = await axios.get('https://www.dbooks.org/api/book/' + idBook)
-    leLivre.value = aBook.data;
-    return aBook;
+    // try{
+
+    let aBook = await fetch('https://www.dbooks.org/api/book/' + idBook)
+    if(!aBook.ok)
+            {
+                // throw new Error(`HTTP error! status: ${aBook.status}`);
+                console.log(aBook.status)
+                badSearch.value = true
+            }
+            else{
+    const res = await aBook.json()
+    leLivre.value = res;
+    return res;
+            }
+    // }
+    // catch(error)
+    // {
+    //     console.log(error)
+    // }
+    // console.log('aBook',aBook)
+    // if(aBook.data.status === 'ok')
+    //     {
+    // return aBook;
+    //     }
+    // if(aBook.data.status !== ok )
+    //     {
+    //         badSearch.value  = !badSearch.value
+    //     }
 }
 
 
@@ -31,9 +56,9 @@ const addOneBook = async () => {
     let tempo = await fetchOneBook();
 
     const bookinfo = {
-        "idlivre": tempo.data.id,
+        "idlivre": tempo.id,
         "note": "",
-        "livretitle": tempo.data.title
+        "livretitle": tempo.title
     }
     await axios.request({
         headers: { Authorization: `Bearer ${Token}` },
@@ -56,13 +81,6 @@ const addOneBook = async () => {
                     }
                 
             })
-    //catch(function (error) {
-    //     let code = error.response
-    //     console.log(code.status)
-    //     if( code.status === '401' )
-    //         {
-    //         }
-    // })
 }
 
 let userInfo = ref([])
@@ -81,7 +99,7 @@ const checkUser = async () => {
 
     for (let i = 0; i < userInfo.value.lib.length; i++) {
         // console.log("partie 1", userInfo.value.lib[i].idlivre)
-        if (userInfo.value.lib[i].idlivre == tempo.data.id) {
+        if (userInfo.value.lib[i].idlivre == tempo.id) {
             added.value = true;
         }
     }
@@ -95,7 +113,7 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-    <div class="LivreP">
+    <div v-if="badSearch === false" class="LivreP">
         <div class="LivrePimg">
             <img v-bind:src='leLivre.image' />
             <div class="livrePclick">
@@ -115,4 +133,10 @@ onBeforeMount(async () => {
             <div>year:{{ leLivre.year }}</div>
         </div>
     </div>
+    <div class="badSearch" v-else>
+        <h1>Sadly We don't have what you're looking for </h1>
+  </div>
 </template>
+<style scoped>
+
+</style>

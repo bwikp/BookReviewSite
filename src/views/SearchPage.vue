@@ -1,20 +1,33 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
-import { useRouter, useRoute,RouterLink } from 'vue-router';
+import { useRoute,RouterLink } from 'vue-router';
 import axios from 'axios';
 import { decode } from 'html-entities';
 const route = useRoute()
 
 const search = route.params.sq;
 const rSearch = ref([]);
-const router = useRouter()
-
+const badSearch = ref(false)
 const searchBook = async () => {
-  const resultat = await axios.get('https://www.dbooks.org/api/search/' + search)
-  // console.log(resultat.data)
-  rSearch.value = resultat.data.books
-  // console.log(rSearch.value)
-  // router.push({path: '/book/'})
+    await axios.get('https://www.dbooks.org/api/search/' + search)
+  .then(function (response)
+  {
+    console.log(response.data)
+
+    if(response.data.status == "ok")
+    {
+    rSearch.value = response.data.books
+    }
+    else {
+      badSearch.value = !badSearch.value
+    }
+  }).catch(function (error)
+    {
+        console.log(error.status)
+    })
+
+  // rSearch.value = resultat.data.books
+
 }
 
 onBeforeMount(async () => {
@@ -22,8 +35,8 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-  <div class="HomePage">
-    <div class="gallery">
+  <div v-if="badSearch === false" class="HomePage">
+    <div  class="gallery">
       <div v-for="item in rSearch">
       <div class="zoneLivre">
         <RouterLink v-bind:to="'/book/' + item.id"><img class="pimg" v-bind:src='item.image'></RouterLink>
@@ -34,5 +47,13 @@ onBeforeMount(async () => {
     </div>
   </div>
   </div>
+  <div class="badSearch" v-else>
+        <h1>Sadly We don't have what you're looking for </h1>
+  </div>
 </template>
-<style scoped></style>
+<style>
+  .badSearch{
+      margin: 5%;
+      text-align: center;
+  }
+</style>
