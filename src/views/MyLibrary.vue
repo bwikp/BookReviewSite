@@ -22,7 +22,7 @@ const test = async () => {
     const userToPut = await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "GET",
-        url: `http://localhost:8000/api/user/${+payload.id}`
+        url: `https://michel.cciformationlyon.fr/api/user/${+payload.id}`
     }).catch(function (error) {
         let code = error.response.status
         if (code === 401) {
@@ -49,7 +49,8 @@ const delBook = async (id, user) => {
     await axios.request({
         headers: { Authorization: `Bearer ${Token} ` },
         method: "DELETE",
-        url: `http://localhost:8000/api/lib/delete/${id}/${user}`
+        // url: `http://localhost:8000/api/lib/delete/${id}/${user}`
+           url: `https://michel.cciformationlyon.fr/api/lib/delete/${id}/${user}`
     }).catch(function (error) {
         console.log(error.response.status)
     }

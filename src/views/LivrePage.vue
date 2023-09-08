@@ -64,7 +64,8 @@ const addOneBook = async () => {
         headers: { Authorization: `Bearer ${Token}` },
 
         method: "POST",
-        url: `http://localhost:8000/api/lib/new/${payload.id}`,
+        // url: `http://localhost:8000/api/lib/new/${payload.id}`,
+           url: `https://michel.cciformationlyon.fr/api/lib/new/${payload.id}`,
         data: bookinfo
     }).then(function (response)
         {
@@ -90,7 +91,8 @@ const checkUser = async () => {
         {
             headers: { Authorization: `Bearer ${Token}` },
             method: "GET",
-            url: `http://localhost:8000/api/user/${payload.id}`
+            // url: `http://localhost:8000/api/user/${payload.id}`
+            url: `https://michel.cciformationlyon.fr/api/user/${payload.id}`
         }
     )
     let tempo = await fetchOneBook();
@@ -134,7 +136,7 @@ onBeforeMount(async () => {
         </div>
     </div>
     <div class="badSearch" v-else>
-        <h1>Sadly We don't have what you're looking for </h1>
+        <h1> That book will exist someday but for now it doesn't </h1>
   </div>
 </template>
 <style scoped>
