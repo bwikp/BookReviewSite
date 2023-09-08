@@ -199,6 +199,7 @@
 .navSearch{
   height: 100%;
   width: 100%;
+  border: 1px solid bl;
   /* border-radius: 12px 0 0 12px; */
   background: #c0cbda;
   text-align: start;
@@ -221,6 +222,7 @@ input:focus, textarea:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   width: 80px;
   opacity: 0.9;
   border-radius:  0 12px 12px 0;
@@ -266,7 +268,6 @@ body,html,#app{
 }
 .LivrePimg{
     color: black;
-    /* background: #c0cbda; */
     text-align: center;
     height: 90%;
     width: 25%;
@@ -329,13 +330,15 @@ body,html,#app{
 
   #SearchMobile{
       margin-right: 20%;
+      border: 1px black solid;
+      border-radius:  0 12px 12px 0; 
   }
  
   .burgerLine{
       width: 30px;
       height: 5px;
       background: white;
-    } */
+    }
   .pasMobile{
     display: none;
   }
