@@ -20,7 +20,7 @@ const registerUser = async () => {
         last_name: last_name.value
     }
     const questRegister = await axios.post('https://michel.cciformationlyon.fr/api/register', infoUser)
-
+    // const questRegister = await axios.post('http:://localhost:8000/api/register', infoUser)
     if(questRegister.status == 200)
         {
             router.push({ name: 'home' })
