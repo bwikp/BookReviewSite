@@ -55,15 +55,15 @@ let show = ref(false);
   }
   #labelShow{
     position: absolute;
-    top: 20px;
-    right: 10px;
+    top: 3.2%;
+    right: 11px;
     display: none;
     flex-direction: column;
     gap: 5px;
   }
  
   #labelShow .burger{
-      height: 8px;
+      height: 10px;
       width: 40px;
       background: white;
       transition: transform 200ms ease-in-out;
@@ -79,7 +79,7 @@ let show = ref(false);
      height: 50px;
      width: 50px;
      top: 10px;
-     right: 10px;
+     right: 9px;
      opacity: 0;
      position: absolute;
      z-index: 999999;
@@ -93,7 +93,7 @@ let show = ref(false);
     #check:checked ~.spanCheck #burgerSpan
     {
       transform: rotate(-220deg);
-      top: -3px;
+      top: -5px;
       transition: transform 200ms ease-in-out;
     }
 
