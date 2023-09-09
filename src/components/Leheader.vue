@@ -44,7 +44,8 @@ let show = ref(false);
 
 <style scoped>
   .menuSlide{
-    display: none;
+    /* display: none; */
+    visibility: hidden;
   }
   #check{
     display: none;
@@ -82,14 +83,15 @@ let show = ref(false);
     }
     #check:checked ~.menuSlide{
       right: 0;
+      visibility: visible;
       /* display:flex; */
       transition: 250ms ease-in-out   ;
     }
     #check:checked ~.spanCheck #burgerSpan
     {
       transform: rotate(-220deg);
-    top: -3px;
-    transition: transform 200ms ease-in-out;
+      top: -3px;
+      transition: transform 200ms ease-in-out;
     }
 
     #check:checked ~.spanCheck #lastspan{
@@ -102,7 +104,7 @@ let show = ref(false);
     }
     .menuSlide {
     position: absolute;
-    right: -1000px;
+    right: -100%;
     width: 100%;
     background:rgb(80, 106, 225);
     z-index: 99999;

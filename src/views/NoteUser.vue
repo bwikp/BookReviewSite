@@ -18,8 +18,8 @@ const getlib = async () => {
         {
             headers: { Authorization: `Bearer ${Token}` },
             method: "GET",
-            url: `http://localhost:8000/api/lib/${payload.id}/${book}`
-            //    url: `https://michel.cciformationlyon.fr/api/lib/${payload.id}/${book}`
+            // url: `http://localhost:8000/api/lib/${payload.id}/${book}`
+               url: `https://michel.cciformationlyon.fr/api/lib/${payload.id}/${book}`
             // https://michel.cciformationlyon.fr
         }).catch(function (error) {
             let code = error.response.status
@@ -43,8 +43,8 @@ const noteLivre = async () => {
         {
             headers: { Authorization: `Bearer ${Token}` },
             method: "PUT",
-            url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`,
-            // url: `https://michel.cciformationlyon.fr/api/lib/note/${payload.id}/${book}`,
+            // url: `http://localhost:8000/api/lib/note/${payload.id}/${book}`,
+            url: `https://michel.cciformationlyon.fr/api/lib/note/${payload.id}/${book}`,
             data: jsonNote
         }
         // https://michel.cciformationlyon.fr

@@ -5,8 +5,8 @@ import Leheader from './components/Leheader.vue';
 </script>
 
 <template>
-  <Leheader/>
-  <RouterView :key="$route.path" />
+  <Leheader class="leHead" />
+  <RouterView class="page" :key="$route.path" />
 </template>
 
 <style scoped>
