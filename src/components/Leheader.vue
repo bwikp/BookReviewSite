@@ -26,6 +26,8 @@ let show = ref(false);
             <RouterLink v-if="Token != null" to="/logout">Logout</RouterLink>
             <RouterLink v-else to="/login">Login</RouterLink>
             <RouterLink to="/library">MyLibrary</RouterLink>
+            <RouterLink to="/privacy">Privacy Policy</RouterLink>
+
         </div>
     </div>
     
@@ -38,6 +40,7 @@ let show = ref(false);
         <RouterLink class="hover-underline" v-if="Token != null" to="/logout">Logout</RouterLink>
         <RouterLink class="hover-underline" v-else to="/login">Login</RouterLink>
         <RouterLink class="hover-underline" to="/library">MyLibrary</RouterLink>
+        <RouterLink class="hover-underline" to="/privacy">Privacy Policy</RouterLink>
     </div>
 </template>
 <!-- v-show="show" -->
