@@ -27,23 +27,82 @@ let show = ref(false);
             <RouterLink v-else to="/login">Login</RouterLink>
             <RouterLink to="/library">MyLibrary</RouterLink>
         </div>
-        <div class="burgerMenu" @click="show = !show">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
     </div>
-    <div v-show="show" class="menuSlide">
+    
+        <input type="checkbox"  name="show" id="check">
+        <label class="spanCheck" id="labelShow" for="show">
+          <span id="firstspan" class="burger"></span>
+          <span id="burgerSpan" class="burger"></span>
+        </label>
+    <div class="menuSlide">
         <RouterLink class="hover-underline" v-if="Token != null" to="/logout">Logout</RouterLink>
         <RouterLink class="hover-underline" v-else to="/login">Login</RouterLink>
         <RouterLink class="hover-underline" to="/library">MyLibrary</RouterLink>
     </div>
 </template>
+<!-- v-show="show" -->
+
 <style scoped>
+  .menuSlide{
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  #labelShow{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+  }
+ 
+  #labelShow .burger{
+      height: 8px;
+      width: 40px;
+      background: white;
+      transition: transform 200ms ease-in-out;
+  }
   @media (max-width:1050px) {
+    #check{
+      display: block
+    }
+    #labelShow{
+      display: flex;
+    }
+    #check{
+     height: 50px;
+     width: 50px;
+     top: 10px;
+     right: 10px;
+     opacity: 0;
+     position: absolute;
+     z-index: 999999;
+    }
+    #check:checked ~.menuSlide{
+      right: 0;
+      /* display:flex; */
+      transition: 250ms ease-in-out   ;
+    }
+    #check:checked ~.spanCheck #burgerSpan
+    {
+      transform: rotate(-220deg);
+    top: -3px;
+    transition: transform 200ms ease-in-out;
+    }
+
+    #check:checked ~.spanCheck #lastspan{
+        display: none;
+    }
+    #check:checked ~.spanCheck #firstspan{
+        transform: rotate(220deg);
+        top: 10px;
+        transition: transform 200ms ease-in-out;
+    }
     .menuSlide {
     position: absolute;
-    right: 0;
+    right: -1000px;
     width: 100%;
     background:rgb(80, 106, 225);
     z-index: 99999;
@@ -51,8 +110,9 @@ let show = ref(false);
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    transition: width 200ms ease-in ;
+    transition:  100ms ease-in ;
   }
+
   .hover-underline {
     height: 3vh;
     margin-bottom: 2.5%;

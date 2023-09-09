@@ -18,8 +18,8 @@ const LoginCheck = async () => {
     password: password.value
   }
   const token =
-  //   await axios.post('http://localhost:8000/api/login_check', loginInfo)
-   await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
+    await axios.post('http://localhost:8000/api/login_check', loginInfo)
+  //  await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
 
   if (token.status == 200) {
     // router.push({ name: 'home' })
