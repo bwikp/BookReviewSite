@@ -18,7 +18,6 @@ if (localStorage.length !== 0) {
 const idBook = route.params.id.toLowerCase()
 const leLivre = ref([]);
 let   badSearch  = ref(false)
-
 const fetchOneBook = async () => {
 
     let aBook = await fetch('https://www.dbooks.org/api/book/' + idBook)
@@ -94,6 +93,7 @@ onBeforeMount(async () => {
     await fetchOneBook()
     if (localStorage.length !== 0) {
         await checkUser()
+        await getCategory()
     }
 })
 </script>

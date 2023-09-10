@@ -19,7 +19,7 @@ const getlib = async () => {
             headers: { Authorization: `Bearer ${Token}` },
             method: "GET",
             // url: `http://localhost:8000/api/lib/${payload.id}/${book}`
-               url: `https://michel.cciformationlyon.fr/api/lib/${payload.id}/${book}`
+            url: `https://michel.cciformationlyon.fr/api/lib/${payload.id}/${book}`
             // https://michel.cciformationlyon.fr
         }).catch(function (error) {
             let code = error.response.status
@@ -65,16 +65,22 @@ onBeforeMount(
         <div class="noteContent" v-if="displayNote">
             <p>{{ txtaera }}</p>
         </div>
-        <div  v-else class="noteContent editnoteZone">
+        <div v-else class="noteContent editnoteZone">
             <textarea v-model="txtaera">{{ Note.note }}</textarea>
         </div>
-            <input v-if="displayNote" id="editButton" type="button" value="edit" @click="noteLivre()">
-            <input v-else id="editButton" type="button" value="save" @click="noteLivre()">
+        <input v-if="displayNote" id="editButton" type="button" value="edit" @click="noteLivre()">
+        <input v-else id="editButton" type="button" value="save" @click="noteLivre()">
     </div>
 </template>
 <style scoped>
-  .notePage h2{
-  font-size: 20px;
-  margin: 3%;
+.notePage h2 {
+    font-size: 20px;
+    margin: 2%;
+}
+
+@media (max-width:1050px) {
+    .notePage h2 {
+        font-size: 16px;
+    }
 }
 </style>

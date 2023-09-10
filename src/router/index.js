@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue'
 import NoteUserVue from '../views/NoteUser.vue'
 import NotFound from '../views/NotFound.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import PageContact from '../views/PageContact.vue'
 const router = createRouter({
   mode: 'history',
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -66,6 +67,11 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfilePage
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: PageContact
     }
   ]
 })
