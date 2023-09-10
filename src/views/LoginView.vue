@@ -18,8 +18,8 @@ const LoginCheck = async () => {
     password: password.value
   }
   const token =
-    await axios.post('http://localhost:8000/api/login_check', loginInfo)
-  //  await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
+    // await axios.post('http://localhost:8000/api/login_check', loginInfo)
+   await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
 
   if (token.status == 200) {
     // router.push({ name: 'home' })
@@ -46,7 +46,7 @@ const LoginCheck = async () => {
       <p v-if="!regexMail.test(email) && email != ''">please enter a valid mail adress !!!</p>
       <label for="password">password</label>
       <input type="password" name="password" placeholder="password" v-model="password">
-      <RouterLink class="linkLogin" to="/register">Sign in</RouterLink>
+      <RouterLink class="linkLogin" to="/register">Sign up</RouterLink>
       <p v-if="!regexPassword.test(password) && password != ''"> At least 6 characters</p>
       <input v-if="regexMail.test(email) == true && regexPassword.test(password) == true" class="DwdButton"
         type="button" value="login" @click="LoginCheck()">

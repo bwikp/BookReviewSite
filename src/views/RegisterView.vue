@@ -41,7 +41,7 @@ const registerUser = async () => {
             <input type="text" name="fname" placeholder="first_name"  v-model="first_name">
             <label for="lname">last name</label>
             <input type="text" name="lname" placeholder="last_name"  v-model="last_name">
-            <RouterLink class="linkRegister" to="/login">Sign up</RouterLink>
+            <RouterLink class="linkRegister" to="/login">Sign in</RouterLink>
             <input v-if="regexMail.test(email) == true  && regexPassword.test(password) == true && regexName.test(first_name) == true && regexName.test(last_name)" id="DwdRegister" type="button" value="register"  @click="registerUser()">
         </div>
     </div>

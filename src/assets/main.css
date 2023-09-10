@@ -67,7 +67,7 @@
   font-family: sans-serif;
 }
 .navlist a:hover{
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 .editnoteZone{

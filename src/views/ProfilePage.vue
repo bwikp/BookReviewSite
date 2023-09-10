@@ -17,8 +17,8 @@ import jwt_decode from "jwt-decode";
         const fetchUserData = await axios.request({
             headers: { Authorization: `Bearer ${Token} ` },
             method: "GET",
-        // url: `https://michel.cciformationlyon.fr/api/user/${+payload.id}`
-        url: `http://localhost:8000/api/user/${+payload.id}`
+        url: `https://michel.cciformationlyon.fr/api/user/${+payload.id}`
+        // url: `http://localhost:8000/api/user/${+payload.id}`
         }).catch(function (error)
             {
                 let code = error.response.status
