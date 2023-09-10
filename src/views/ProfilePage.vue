@@ -43,7 +43,7 @@ import jwt_decode from "jwt-decode";
     <div class="footer">
        <div class="ulbiss">
             <a :href='dataUser.contact.twitter' target="_blank">twitter</a>
-            <a :href="dataUser.contact.github" target="_blank">github</a>
+            <a :href='dataUser.contact.github' target="_blank">github</a>
             <a :href="dataUser.contact.linkedin" target="_blank">linkedin</a>
        </div>
     </div>
