@@ -67,7 +67,7 @@ onBeforeMount(async () => {
 </script>
 <template>
     <div class="HomePage">
-        <h1 class="libTitle">{{ userUser.last_name }}'s Library</h1>
+        <h1 class="libTitle">{{ userUser.first_name }}'s Library</h1>
         <div class="gallery">
             <div v-for="liv in defArray" :key="liv.data.id">
                 <div @click="" class="zoneLivre">
