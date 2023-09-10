@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { useRouter,RouterLink } from 'vue-router';
+import { useRouter, RouterLink } from 'vue-router';
 import axios from 'axios';
 
 
@@ -19,7 +19,7 @@ const LoginCheck = async () => {
   }
   const token =
     // await axios.post('http://localhost:8000/api/login_check', loginInfo)
-   await axios.post('https://michel.cciformationlyon.fr/api/login_check',loginInfo)
+    await axios.post('https://michel.cciformationlyon.fr/api/login_check', loginInfo)
 
   if (token.status == 200) {
     // router.push({ name: 'home' })
@@ -33,7 +33,7 @@ const LoginCheck = async () => {
   localStorage.setItem('token', token.data.token)
   console.log(localStorage.token)
 
-          }
+}
 
 </script>
 
@@ -48,8 +48,8 @@ const LoginCheck = async () => {
       <input type="password" name="password" placeholder="password" v-model="password">
       <RouterLink class="linkLogin" to="/register">Sign up</RouterLink>
       <p v-if="!regexPassword.test(password) && password != ''"> At least 6 characters</p>
-      <input v-if="regexMail.test(email) == true && regexPassword.test(password) == true" class="DwdButton"
-        type="button" value="login" @click="LoginCheck()">
+      <input v-if="regexMail.test(email) == true && regexPassword.test(password) == true" class="DwdButton" type="button"
+        value="login" @click="LoginCheck()">
     </div>
   </div>
 </template>

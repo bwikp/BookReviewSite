@@ -93,7 +93,6 @@ onBeforeMount(async () => {
     await fetchOneBook()
     if (localStorage.length !== 0) {
         await checkUser()
-        await getCategory()
     }
 })
 </script>

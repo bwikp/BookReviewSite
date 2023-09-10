@@ -1,11 +1,12 @@
 <script setup>
-    import { onBeforeMount, ref } from 'vue';
+    import { ref } from 'vue';
     import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { useRouter } from 'vue-router';
     const github = ref('')
     const twitter = ref('')
     const linkedin = ref('')
-
+    const router = useRouter()
     const Token = localStorage.token
     const payload = jwtDecode(Token)
     const newContact = async()=>{
@@ -14,7 +15,7 @@ import jwtDecode from 'jwt-decode';
                 twitter: twitter.value,
                 linkedin: linkedin.value
             }
-        await axios.request(
+    const newa =  await axios.request(
             {
                 headers:{ Authorization: `Bearer ${Token}`},
                 method: "POST",
@@ -22,6 +23,10 @@ import jwtDecode from 'jwt-decode';
                 data: contactJson
             }
         )
+       if(newa.status == "200")
+        {
+            router.push({name: 'profile'})
+        }     
     }
 </script>
 <template>

@@ -23,7 +23,7 @@ const registerUser = async () => {
     // const questRegister = await axios.post('http:://localhost:8000/api/register', infoUser)
     if(questRegister.status == 200)
         {
-            router.push({ name: 'home' })
+            router.push({ name: 'login' })
         }
 }
 </script>

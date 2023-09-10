@@ -3,12 +3,12 @@ import { onBeforeMount, ref } from 'vue';
 import axios from 'axios';
 import { useRouter, RouterLink } from 'vue-router';
 import jwt_decode from "jwt-decode";
-
 const router = useRouter()
 const dataUser = ref([])
 const password = ref('')
 const first_name = ref('')
 const last_name = ref('')
+const userDataSafe = ref(false)
 if (localStorage.length === 0) {
     window.location.assign("/login")
 }
@@ -29,9 +29,18 @@ const userData = async () => {
         }
     })
     dataUser.value = fetchUserData.data
-    console.log("user", dataUser.value)
-    first_name.value = dataUser.value.first_name
-    last_name.value = dataUser.value.last_name
+    console.log(dataUser.value)
+    if(dataUser.value.contact === undefined)    
+        {
+            router.push({name: 'contact'})
+        }
+        else{
+            userDataSafe.value = true
+            first_name.value = dataUser.value.first_name
+            last_name.value = dataUser.value.last_name
+            userContact()
+        }
+    
 }
 const dataContact = ref([])
 
@@ -39,14 +48,15 @@ const userContact = async () => {
     const fetchContact = await axios.request({
         headers: { Authorization: `Bearer ${Token}` },
         method: "GET",
-        url: `https://michel.cciformationlyon.fr/api/contact/${payload.id}`
+        url: `https://michel.cciformationlyon.fr/api/contact/${dataUser.value.contact.id}`
     })
-    dataContact.value = fetchContact.data
-    // console.log('contact',dataContact.value)
-    twitter.value = dataContact.value.twitter
-    github.value = dataContact.value.github
-    linkedin.value = dataContact.value.linkedin
-}
+        console.error(fetchContact)
+                dataContact.value = fetchContact.data
+                        twitter.value = dataContact.value.twitter
+                        github.value = dataContact.value.github
+                        linkedin.value = dataContact.value.linkedin
+        }
+
 const github = ref('')
 const twitter = ref('')
 const linkedin = ref('')
@@ -67,7 +77,7 @@ const editUser = async () => {
         {
             headers: { Authorization: `Bearer ${Token}` },
             method: "PUT",
-            url: `https://michel.cciformationlyon.fr/api/contact/update/${payload.id}`,
+            url: `https://michel.cciformationlyon.fr/api/contact/update/${dataUser.value.contact.id}`,
             data: jsonContact
         })
     await axios.request(
@@ -84,7 +94,6 @@ const editUser = async () => {
 const regexPassword =/^.{6,30}$/
 onBeforeMount(async () => {
     await userData()
-    await userContact()
 })
 </script>
 <template>
@@ -114,13 +123,13 @@ onBeforeMount(async () => {
         </div>
         
     </div>
-    <div v-if="displayUser" class="footer">
-        <div class="ulbiss">
+   <div v-if="displayUser" class="footer">
+        <div v-if="userDataSafe" class="ulbiss">
             <a :href='dataUser.contact.twitter' target="_blank">twitter</a>
             <a :href='dataUser.contact.github' target="_blank">github</a>
             <a :href="dataUser.contact.linkedin" target="_blank">linkedin</a>
         </div>
-    </div>
+    </div> 
 </template>
 <style scoped>
  @media (max-width:1050px) {
